@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import click
 
 
 def get_test_ids(url, days):
@@ -11,6 +12,7 @@ def get_test_ids(url, days):
 
 
 def get_result(test_id):
+    click.echo('Get data from test {}'.format(test_id))
     out = {}
     data = requests.get(
         'https://www.webpagetest.org/jsonResult.php?test='+test_id).json()
@@ -22,4 +24,5 @@ def get_result(test_id):
     out['location'] = data['data']['location']
     out['mobile'] = data['data']['mobile']
     out['completed'] = data['data']['completed']
+    click.echo(out)
     return out
