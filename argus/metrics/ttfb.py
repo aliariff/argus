@@ -1,8 +1,11 @@
 from .base import Base
 
-class Ttff(Base):
-  def measurement(self):
-    'ttfb'
 
-  def fields(self):
-    self.data['mean']['TTFB_mean']
+class Ttfb(Base):
+    def measurement(self):
+        return 'ttfb'
+
+    def fields(self):
+        return {
+            "value": self.data['data']['average']['firstView']['TTFB']
+        }

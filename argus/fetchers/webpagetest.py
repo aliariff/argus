@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
-import click
+import aiohttp
+import requests
 
 
 def get_test_ids(url, days):
@@ -11,18 +11,13 @@ def get_test_ids(url, days):
     return [td.find('a')['href'][8:-1] for td in tds]
 
 
-def get_result(test_id):
-    click.echo('Get data from test {}'.format(test_id))
-    out = {}
-    data = requests.get(
-        'https://www.webpagetest.org/jsonResult.php?test='+test_id).json()
-    out['TTFB_mean'] = data['data']['average']['firstView']['TTFB']
-    out['TTFB_median'] = data['data']['average']['firstView']['TTFB']
-    out['connectivity'] = data['data']['connectivity']
-    out['id'] = data['data']['id']
-    out['from'] = data['data']['from']
-    out['location'] = data['data']['location']
-    out['mobile'] = data['data']['mobile']
-    out['completed'] = data['data']['completed']
-    click.echo(out)
-    return out
+async def get_result(test_id):
+    try:
+        print('Get data from test {}'.format(test_id))
+        session = aiohttp.ClientSession()
+        response = await session.get('https://www.webpagetest.org/jsonResult.php?test='+test_id)
+        data = await response.json()
+        await session.close()
+        return data
+    except:
+        print(data)

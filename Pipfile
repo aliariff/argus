@@ -8,6 +8,7 @@ requests = "*"
 click = "*"
 "beautifulsoup4" = "*"
 influxdb = "*"
+aiohttp = "*"
 
 [dev-packages]
 argus = {editable = true, path = "."}
