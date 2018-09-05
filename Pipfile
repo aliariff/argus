@@ -11,6 +11,8 @@ influxdb = "*"
 
 [dev-packages]
 argus = {editable = true, path = "."}
+pylint = "*"
+"autopep8" = "*"
 
 [requires]
 python_version = "3.7"
