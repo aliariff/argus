@@ -1,7 +1,13 @@
 import click
 import requests as re
+import datetime
 from bs4 import BeautifulSoup
-from tqdm import tqdm
+from influxdb import InfluxDBClient
+
+client = InfluxDBClient('localhost', 8086, 'root', 'root', 'example')
+client.create_database('example')
+result = client.query('select value from ttfb;')
+print result
 
 @click.group()
 def cli():
@@ -14,7 +20,18 @@ def populate(url, days):
     ids=getTestIDs(url,days)
     for id_ in ids:
         print('\nid:{}\n'.format(id_))
-        print(getData(id_))
+        data = getData(id_)
+        timestamp = datetime.datetime.fromtimestamp(data['completed'])
+        client.write_points([
+            {
+                "measurement": "ttfb",
+                "tags": {},
+                "time": timestamp.strftime('%Y-%m-%dT%H:%M:%SZ'),
+                "fields": {
+                    "value": float(data['TTFB_mean'])
+                }
+            }
+        ])
 
 def getTestIDs(url,days):
     page = re.get('https://www.webpagetest.org/testlog.php?days='+str(days)+'&filter='+url+'&all=on')
