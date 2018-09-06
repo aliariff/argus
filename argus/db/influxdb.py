@@ -21,6 +21,7 @@ class InfluxDB(object):
                                                           db_config['user'],
                                                           db_config['password'],
                                                           db_config['dbname'])
+                cls._instance.connection.create_database(db_config['dbname'])
 
             except Exception as error:
                 print('Error: connection not established {}'.format(error))

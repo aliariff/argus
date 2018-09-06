@@ -24,9 +24,9 @@ async def __process(test_id):
     data = await webpagetest.get_result(test_id)
 
     print('Building metric for test {}'.format(test_id))
-    metrics = Builder(data).build
+    metrics = Builder(data).build()
 
-    print('Saving metric for test {}'.format(test_id))
+    print('Saving metric for test {}, {}'.format(test_id, metrics))
     InfluxDB().save(metrics)
 
     return
