@@ -1,4 +1,5 @@
 import re
+import urllib
 
 class TagExtractor(object):
     def __init__(self, data, *args, **kwargs):
