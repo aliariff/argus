@@ -6,8 +6,12 @@ class RequestPerType(Base):
         return 'request_per_type'
 
     def fields(self):
-        return {
-            "js": 0,
-            "css": 1,
-            "img": 2
-        }
+        return self.count_request_per_type()
+
+    def count_request_per_type(self):
+        result = {}
+        for req in self.data['request']:
+            if req['content_type'] == 'html':
+                result['html'] += 1
+            elif req['content_type'] == 'css':
+                result['css'] += 1
