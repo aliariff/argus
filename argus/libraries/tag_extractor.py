@@ -40,5 +40,6 @@ class TagExtractor(object):
         pass
 
     def __website(self):
-        return self.data['data']['url']
+        return urllib.parse.urlparse(self.data['data']['url'])[1]
+        
 
