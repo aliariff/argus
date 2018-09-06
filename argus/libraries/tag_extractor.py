@@ -1,3 +1,5 @@
+import re
+
 class TagExtractor(object):
     def __init__(self, data, *args, **kwargs):
         self.data = data
@@ -15,19 +17,28 @@ class TagExtractor(object):
         }
 
     def __browser(self):
-        pass
+        return self.data['data']['location'].split(':')[1]
 
     def __city(self):
-        pass
+        temp = self.data['data']['from'].split()
+        if temp[1] == '-':
+            return None
+        else:
+            return re.sub("[^a-zA-Z]+", "", temp[0])
 
     def __connection(self):
-        pass
+        return self.data['data']['connectivity']
 
     def __country(self):
-        pass
+        temp = self.data['data']['from'].split()
+        if temp[1] == '-':
+            return temp[0]
+        else:
+            return temp[1]
 
     def __device(self):
         pass
 
     def __website(self):
-        pass
+        return self.data['data']['url']
+
