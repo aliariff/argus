@@ -10,11 +10,11 @@ class Base(object):
 
     def run(self):
         if self.is_valid():
-            return self.build()
+            return self.fill()
         else:
             return None
 
-    def build(self):
+    def fill(self):
         raise NotImplementedError()
 
     def is_valid(self):

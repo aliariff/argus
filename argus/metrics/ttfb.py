@@ -2,7 +2,7 @@ from .base import Base
 
 
 class Ttfb(Base):
-    def build(self):
+    def fill(self):
         return {
             "measurement": self.measurement(),
             "tags": self.tags(),

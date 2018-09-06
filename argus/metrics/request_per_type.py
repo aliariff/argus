@@ -3,7 +3,7 @@ from collections import Counter
 
 
 class RequestPerType(Base):
-    def build(self):
+    def fill(self):
         self.requests = self.data['data']['runs']['1']['firstView']['requests']
         request_counts = self.__count_request_per_type()
 
