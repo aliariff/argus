@@ -9,7 +9,4 @@ class Builder(object):
         self.kwargs = kwargs
 
     def build(self):
-        metrics = []
-        for cls in [Ttfb, RequestPerType]:
-            metrics.append(cls(self.data).build())
-        return metrics
+        return [cls(self.data).build() for cls in [Ttfb, RequestPerType]]
