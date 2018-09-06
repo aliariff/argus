@@ -14,7 +14,9 @@ def run(url, days):
     futures = []
     for id_ in ids:
         futures.append(__process(id_))
-    loop.run_until_complete(asyncio.wait(futures))
+
+    if futures:
+        loop.run_until_complete(asyncio.wait(futures))
 
 
 async def __process(test_id):
