@@ -6,28 +6,28 @@ class TagExtractor(object):
 
     def extract(self):
         return {
-            "browser": self.browser(),
-            "city": self.city(),
-            "connection": self.connection(),
-            "country": self.country(),
-            "device": self.device(),
-            "website": self.website()
+            "browser": self.__browser(),
+            "city": self.__city(),
+            "connection": self.__connection(),
+            "country": self.__country(),
+            "device": self.__device(),
+            "website": self.__website()
         }
 
-    def browser(self):
+    def __browser(self):
         pass
 
-    def city(self):
+    def __city(self):
         pass
 
-    def connection(self):
+    def __connection(self):
         pass
 
-    def country(self):
+    def __country(self):
         pass
 
-    def device(self):
+    def __device(self):
         pass
 
-    def website(self):
+    def __website(self):
         pass
