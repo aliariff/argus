@@ -10,6 +10,7 @@ click = "*"
 influxdb = "*"
 aiohttp = "*"
 coloredlogs = "*"
+idna-ssl = "*"
 
 [dev-packages]
 argus = {editable = true, path = "."}
