@@ -1,6 +1,6 @@
 import asyncio
 import argus.fetchers.webpagetest as webpagetest
-import argus.db.influxdb as influxdb
+from argus.db.influxdb import InfluxDB
 from argus.metrics.builder import Builder
 
 
@@ -27,6 +27,5 @@ async def __process(test_id):
     metrics = Builder(data).build
 
     print('Saving metric for test {}'.format(test_id))
-    influxdb.client().write_points(metrics)
-
+    InfluxDB().save(metrics)
     return

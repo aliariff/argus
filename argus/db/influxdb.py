@@ -1,7 +1,35 @@
-import functools
 from influxdb import InfluxDBClient
 
-def client():
-    client = InfluxDBClient('localhost', 8086, 'root', 'root', 'example')
-    client.create_database('example')
-    return client
+
+class InfluxDB(object):
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = object.__new__(cls)
+            db_config = {
+                'host': 'localhost',
+                'port': 8086,
+                'user': 'root',
+                'password': 'root',
+                'dbname': 'example'
+            }
+            try:
+                print('connecting to InfluxDB database...')
+                cls._instance.connection = InfluxDBClient(db_config['host'],
+                                                          db_config['port'],
+                                                          db_config['user'],
+                                                          db_config['password'],
+                                                          db_config['dbname'])
+
+            except Exception as error:
+                print('Error: connection not established {}'.format(error))
+                InfluxDB._instance = None
+
+        return cls._instance
+
+    def __init__(self):
+        self.connection = self._instance.connection
+
+    def save(self, metrics):
+        self.connection.write_points(metrics)
