@@ -22,6 +22,9 @@ def run(url, days):
 async def __process(test_id):
     print('Get data from test {}'.format(test_id))
     data = await webpagetest.get_result(test_id)
+    if data['statusCode'] != 200:
+        print('Get data failed {}'.format(test_id))
+        return
 
     print('Building metric for test {}'.format(test_id))
     metrics = Builder(data).build()

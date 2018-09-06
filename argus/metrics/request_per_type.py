@@ -11,5 +11,6 @@ class RequestPerType(Base):
 
     def __count_request_per_type(self):
         requests = self.data['data']['runs']['1']['firstView']['requests']
-        results = Counter([request['contentType'] for request in requests])
+        results = Counter([request.get('contentType')
+                           or 'other' for request in requests])
         return dict(results)

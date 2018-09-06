@@ -7,5 +7,5 @@ class Ttfb(Base):
 
     def fields(self):
         return {
-            "value": self.data['data']['average']['firstView']['TTFB']
+            "value": float(self.data['data']['average']['firstView']['TTFB'])
         }
