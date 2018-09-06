@@ -3,7 +3,7 @@ from .base import Base
 
 class RequestPerType(Base):
     def measurement(self):
-        return 'RequestPerType'
+        return 'request_per_type'
 
     def fields(self):
         return {
