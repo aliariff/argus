@@ -8,13 +8,17 @@ class Base(object):
         self.args = args
         self.kwargs = kwargs
 
+    def run(self):
+        if self.is_valid():
+            return self.build()
+        else:
+            return None
+
     def build(self):
-        return {
-            "measurement": self.measurement(),
-            "tags": self.tags(),
-            "time": self.time(),
-            "fields": self.fields()
-        }
+        raise NotImplementedError()
+
+    def is_valid(self):
+        raise NotImplementedError()
 
     def measurement(self):
         raise NotImplementedError()
@@ -26,6 +30,3 @@ class Base(object):
         timestamp = datetime.datetime.fromtimestamp(
             self.data['data']['completed'])
         return timestamp.strftime('%Y-%m-%dT%H:%M:%SZ')
-
-    def fields(self):
-        raise NotImplementedError()

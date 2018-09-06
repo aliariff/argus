@@ -8,5 +8,13 @@ class Builder(object):
         self.args = args
         self.kwargs = kwargs
 
-    def build(self):
-        return [cls(self.data).build() for cls in [Ttfb, RequestPerType]]
+    def run(self):
+        results = []
+        metrics = [cls(self.data).run() for cls in [Ttfb, RequestPerType]]
+        for metric in metrics:
+            if isinstance(metric, list):
+                [results.append(x) for x in metric]
+            else:
+                results.append(metric)
+
+        return results
