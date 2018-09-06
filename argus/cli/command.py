@@ -1,10 +1,11 @@
-import click
+from argus.db.influxdb import InfluxDB
 import argus.runners.populate as Populate
+import click
 
 
 @click.group()
 def cli():
-    pass
+    InfluxDB()  # init db
 
 
 @cli.command()

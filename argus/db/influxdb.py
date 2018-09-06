@@ -31,6 +31,7 @@ class InfluxDB(object):
             except Exception as error:
                 logging.error(
                     'Error: connection not established {}'.format(error))
+                raise error
 
         return cls._instance
 
