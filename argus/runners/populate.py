@@ -28,4 +28,5 @@ async def __process(test_id):
 
     print('Saving metric for test {}'.format(test_id))
     InfluxDB().save(metrics)
+
     return
