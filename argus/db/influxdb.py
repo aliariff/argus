@@ -1,4 +1,9 @@
+import coloredlogs
+import logging
 from influxdb import InfluxDBClient
+
+logger = logging.getLogger(__name__)
+coloredlogs.install()
 
 
 class InfluxDB(object):
@@ -15,7 +20,7 @@ class InfluxDB(object):
                 'dbname': 'example'
             }
             try:
-                print('connecting to InfluxDB database...')
+                logging.info('connecting to InfluxDB database...')
                 cls._instance.connection = InfluxDBClient(db_config['host'],
                                                           db_config['port'],
                                                           db_config['user'],
@@ -24,7 +29,8 @@ class InfluxDB(object):
                 cls._instance.connection.create_database(db_config['dbname'])
 
             except Exception as error:
-                print('Error: connection not established {}'.format(error))
+                logging.error(
+                    'Error: connection not established {}'.format(error))
 
         return cls._instance
 
@@ -35,5 +41,6 @@ class InfluxDB(object):
         try:
             self.connection.write_points(metrics)
         except Exception as error:
-            print('Error saving metrics "{}", error: {}'.format(metrics, error))
+            logging.error(
+                'Error saving metrics "{}", error: {}'.format(metrics, error))
             return None

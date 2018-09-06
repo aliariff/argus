@@ -9,6 +9,7 @@ click = "*"
 "beautifulsoup4" = "*"
 influxdb = "*"
 aiohttp = "*"
+coloredlogs = "*"
 
 [dev-packages]
 argus = {editable = true, path = "."}

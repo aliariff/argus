@@ -1,13 +1,18 @@
-import asyncio
-import argus.fetchers.webpagetest as webpagetest
 from argus.db.influxdb import InfluxDB
 from argus.metrics.builder import Builder
+import argus.fetchers.webpagetest as webpagetest
+import asyncio
+import coloredlogs
+import logging
+
+logger = logging.getLogger(__name__)
+coloredlogs.install()
 
 
 def run(url, days):
-    print('Fetching tests of {} for the last {} days'.format(url, days))
+    logger.info('Fetching tests of {} for the last {} days'.format(url, days))
     ids = webpagetest.get_test_ids(url, days)
-    print('Test ids {}'.format(ids))
+    logger.info('Test ids {}'.format(ids))
 
     futures = []
     for id_ in ids:
@@ -19,16 +24,17 @@ def run(url, days):
 
 
 async def __process(test_id):
-    print('Get data from test {}'.format(test_id))
+    logger.info('Get data from test {}'.format(test_id))
     data = await webpagetest.get_result(test_id)
     if data['statusCode'] != 200:
-        print('Get data failed {}'.format(test_id))
+        logger.error('Get data failed {}'.format(test_id))
         return
 
-    print('Building metric for test {}'.format(test_id))
+    logger.info('Building metric for test {}'.format(test_id))
     metrics = Builder(data).run()
 
-    print('Saving metric for test {}, size: {}'.format(test_id, len(metrics)))
+    logger.info('Saving metric for test {}, size: {}'.format(
+        test_id, len(metrics)))
     InfluxDB().save(metrics)
 
     return
