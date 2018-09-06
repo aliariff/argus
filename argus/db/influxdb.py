@@ -25,7 +25,6 @@ class InfluxDB(object):
 
             except Exception as error:
                 print('Error: connection not established {}'.format(error))
-                InfluxDB._instance = None
 
         return cls._instance
 
@@ -33,4 +32,8 @@ class InfluxDB(object):
         self.connection = self._instance.connection
 
     def save(self, metrics):
-        self.connection.write_points(metrics)
+        try:
+            self.connection.write_points(metrics)
+        except Exception as error:
+            print('Error saving metrics "{}", error: {}'.format(metrics, error))
+            return None
