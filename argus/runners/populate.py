@@ -6,7 +6,10 @@ from argus.metrics.builder import Builder
 
 def run(url, days):
     loop = asyncio.get_event_loop()
+
+    print('Fetching tests of {} for the last {} days'.format(url, days))
     ids = webpagetest.get_test_ids(url, days)
+    print('Test ids found {}'.format(ids))
 
     futures = []
     for id_ in ids:
@@ -15,7 +18,13 @@ def run(url, days):
 
 
 async def __process(test_id):
+    print('Get data from test {}'.format(test_id))
     data = await webpagetest.get_result(test_id)
+
+    print('Building metric for test {}'.format(test_id))
     metrics = Builder(data).build
+
+    print('Saving metric for test {}'.format(test_id))
     influxdb.client().write_points(metrics)
+
     return
