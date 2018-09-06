@@ -1,7 +1,7 @@
 import asyncio
 import argus.fetchers.webpagetest as webpagetest
 import argus.db.influxdb as influxdb
-from argus.metrics.ttfb import Ttfb
+from argus.metrics.builder import Builder
 
 
 def run(url, days):
@@ -16,7 +16,6 @@ def run(url, days):
 
 async def __process(test_id):
     data = await webpagetest.get_result(test_id)
-    metric = Ttfb(data).build()
-    print(metric)
-    influxdb.client().write_points([metric])
+    metrics = Builder(data).build
+    influxdb.client().write_points(metrics)
     return
