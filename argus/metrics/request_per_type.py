@@ -9,6 +9,9 @@ class RequestPerType(Base):
 
         metrics = []
         for key, value in request_counts.items():
+            if key is None or key == '':
+                continue
+
             metric = {
                 "measurement": self.measurement(),
                 "tags": {
@@ -32,7 +35,7 @@ class RequestPerType(Base):
 
     def __count_request_per_type(self):
         results = Counter([request.get('contentType')
-                           or 'others' for request in self.requests])
+                           for request in self.requests])
         return dict(results)
 
     def _local_tags(self, key):

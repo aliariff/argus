@@ -13,8 +13,10 @@ class Ttfb(Base):
         }
 
     def is_valid(self):
+        self.value = None
         data = self.data['data']['average']['firstView']
-        self.value = data.get('TTFB')
+        if isinstance(data, dict):
+            self.value = data.get('TTFB')
         return self.value != None
 
     def measurement(self):

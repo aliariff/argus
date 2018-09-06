@@ -12,7 +12,9 @@ class Builder(object):
         results = []
         metrics = [cls(self.data).run() for cls in [Ttfb, RequestPerType]]
         for metric in metrics:
-            if isinstance(metric, list):
+            if metric is None:
+                continue
+            elif isinstance(metric, list):
                 [results.append(x) for x in metric]
             else:
                 results.append(metric)
