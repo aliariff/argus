@@ -1,7 +1,8 @@
 from .ttfb import Ttfb
 from .request_per_type import RequestPerType
+from .response_time import ResponseTime
 
-
+''' We should think about metrics with multiple values like TTFB(mean,media) !still not supported'''
 class Builder(object):
     def __init__(self, data, *args, **kwargs):
         self.data = data
@@ -10,7 +11,7 @@ class Builder(object):
 
     def run(self):
         results = []
-        metrics = [cls(self.data).run() for cls in [Ttfb, RequestPerType]]
+        metrics = [cls(self.data).run() for cls in [Ttfb, RequestPerType,ResponseTime]]
         for metric in metrics:
             if metric is None:
                 continue
