@@ -5,8 +5,6 @@ from argus.metrics.builder import Builder
 
 
 def run(url, days):
-    loop = asyncio.get_event_loop()
-
     print('Fetching tests of {} for the last {} days'.format(url, days))
     ids = webpagetest.get_test_ids(url, days)
     print('Test ids {}'.format(ids))
@@ -16,6 +14,7 @@ def run(url, days):
         futures.append(__process(id_))
 
     if futures:
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(asyncio.wait(futures))
 
 
