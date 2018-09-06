@@ -1,4 +1,5 @@
 from .base import Base
+from collections import Counter
 
 
 class RequestPerType(Base):
@@ -9,11 +10,6 @@ class RequestPerType(Base):
         return self.__count_request_per_type()
 
     def __count_request_per_type(self):
-        result = {}
-        for req in self.data['request']:
-            if req['content_type'] == 'html':
-                result['html'] += 1
-            elif req['content_type'] == 'css':
-                result['css'] += 1
-
-        return result
+        requests = self.data['data']['runs']['1']['firstView']['requests']
+        results = Counter([request['contentType'] for request in requests])
+        return dict(results)

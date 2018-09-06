@@ -20,7 +20,7 @@ class Base(object):
         raise NotImplementedError()
 
     def tags(self):
-        TagExtractor(self.data).extract()
+        return TagExtractor(self.data).extract()
 
     def time(self):
         timestamp = datetime.datetime.fromtimestamp(

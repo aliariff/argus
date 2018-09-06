@@ -9,7 +9,7 @@ def run(url, days):
 
     print('Fetching tests of {} for the last {} days'.format(url, days))
     ids = webpagetest.get_test_ids(url, days)
-    print('Test ids found {}'.format(ids))
+    print('Test ids {}'.format(ids))
 
     futures = []
     for id_ in ids:
