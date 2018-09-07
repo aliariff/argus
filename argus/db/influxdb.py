@@ -9,25 +9,13 @@ coloredlogs.install()
 class InfluxDB(object):
     _instance = None
 
-    def __new__(cls):
+    def __new__(cls, db_config=None):
         if cls._instance is None:
             cls._instance = object.__new__(cls)
-            db_config = {
-                'host': 'localhost',
-                'port': 8086,
-                'user': 'root',
-                'password': 'root',
-                'dbname': 'example'
-            }
             try:
                 logging.info('connecting to InfluxDB database...')
-                cls._instance.connection = InfluxDBClient(db_config['host'],
-                                                          db_config['port'],
-                                                          db_config['user'],
-                                                          db_config['password'],
-                                                          db_config['dbname'])
-                cls._instance.connection.create_database(db_config['dbname'])
-
+                cls._instance.connection = InfluxDBClient(**db_config)
+                cls._instance.connection.create_database(db_config['database'])
             except Exception as error:
                 logging.error(
                     'Error: connection not established {}'.format(error))
@@ -35,7 +23,7 @@ class InfluxDB(object):
 
         return cls._instance
 
-    def __init__(self):
+    def __init__(self, db_config=None):
         self.connection = self._instance.connection
 
     def save(self, metrics):
