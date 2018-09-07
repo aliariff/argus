@@ -3,6 +3,6 @@ python:
   - "3.6"
   - "3.7"
 install:
-  - pipenv install -a
+  - pipenv install
 script:
   - pytest
