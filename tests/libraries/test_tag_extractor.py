@@ -13,13 +13,13 @@ class TestTagExtractor(object):
         assert obj.browser() == "Chrome"
 
     def test_city(self, obj):
-        assert obj.city() == "Dulles"
+        assert obj.city() == "North America"
 
     def test_connection(self, obj):
         assert obj.connection() == "Cable"
 
     def test_country(self, obj):
-        assert obj.country() == "VA"
+        assert obj.country() == "USA"
 
     def test_device(self, obj):
         pass
