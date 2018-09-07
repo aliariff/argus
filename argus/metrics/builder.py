@@ -14,7 +14,8 @@ class Builder(object):
     def run(self):
         results = []
         metrics = [cls(self.data).run()
-                   for cls in [Ttfb, RequestPerType, ResponseTime]]
+                   for cls in [Ttfb, RequestPerType, ResponseTime, DomElements, FullyLoaded, \
+                   Latency, LoadTime, RenderStart, SpeedIndex]]
         for metric in metrics:
             if metric is None:
                 continue
