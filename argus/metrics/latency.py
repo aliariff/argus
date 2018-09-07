@@ -6,8 +6,11 @@ class Latency(Base):
         return self.default_fill()
 
     def is_valid(self):
-        self.value = self.get_value_from_column('latency')
-        return self.value != None
+         self.value = None
+         data = self.data['data']
+         if isinstance(data, dict):
+             self.value = data.get('latency')
+         return self.value != None
 
     def measurement(self):
         return 'latency'
