@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b44cb47e27865a7b5005ab0bdb1c6c9a8c410384d3c84fe78442a07601d83aa5"
+            "sha256": "634565cadee3ba86f44cc0678465564599781504514778cdbba80cdd2911cc2e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -43,6 +43,10 @@
             ],
             "index": "pypi",
             "version": "==3.4.4"
+        },
+        "argus": {
+            "editable": true,
+            "path": "."
         },
         "async-timeout": {
             "hashes": [
@@ -224,10 +228,6 @@
         }
     },
     "develop": {
-        "argus": {
-            "editable": true,
-            "path": "."
-        },
         "astroid": {
             "hashes": [
                 "sha256:292fa429e69d60e4161e7612cb7cc8fa3609e2e309f80c224d93a76d5e7b58be",

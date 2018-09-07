@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+argus = {editable = true, path = "."}
 requests = "*"
 click = "*"
 "beautifulsoup4" = "*"
@@ -14,7 +15,6 @@ idna-ssl = "*"
 geotext = "*"
 
 [dev-packages]
-argus = {editable = true, path = "."}
 pylint = "*"
 "autopep8" = "*"
 pytest = "*"
