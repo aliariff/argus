@@ -1,6 +1,11 @@
 from bs4 import BeautifulSoup
 import aiohttp
+import coloredlogs
+import logging
 import requests
+
+logger = logging.getLogger(__name__)
+coloredlogs.install()
 
 
 def get_test_ids(url, days):
@@ -13,7 +18,13 @@ def get_test_ids(url, days):
 
 async def get_result(test_id):
     session = aiohttp.ClientSession()
-    response = await session.get('https://www.webpagetest.org/jsonResult.php?test='+test_id)
-    data = await response.json()
-    await session.close()
-    return data
+    data = {}
+    try:
+        response = await session.get('https://www.webpagetest.org/jsonResult.php?test='+test_id)
+        data = await response.json()
+    except Exception as error:
+        logging.error(
+            'Error: get_result {} {}'.format(test_id, error))
+    finally:
+        await session.close()
+        return data

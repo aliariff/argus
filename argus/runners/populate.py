@@ -26,7 +26,7 @@ def run(url, days):
 async def __process(test_id):
     logger.info('Get data from test {}'.format(test_id))
     data = await webpagetest.get_result(test_id)
-    if data['statusCode'] != 200:
+    if data.get('statusCode') != 200:
         logger.error('Get data failed {}'.format(test_id))
         return
 
