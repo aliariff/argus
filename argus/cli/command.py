@@ -9,7 +9,11 @@ import click
 @click.option('--password', default='root')
 @click.option('--db', default='example')
 def cli(host, user, password, db):
-    host, port = host.split(':')
+    try:
+        host, port = host.split(':')
+    except:
+        port = 8086
+
     db_config = {
         'host': host,
         'port': port,
