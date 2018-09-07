@@ -12,7 +12,7 @@ coloredlogs.install()
 def run(url, days):
     logger.info('Fetching tests of {} for the last {} days'.format(url, days))
     ids = webpagetest.get_test_ids(url, days)
-    logger.info('Test ids {}'.format(ids))
+    logger.info('Test ids found {}'.format(len(ids)))
 
     futures = []
     for id_ in ids:

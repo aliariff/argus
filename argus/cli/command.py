@@ -28,4 +28,6 @@ def cli(host, user, password, db):
 @click.option('--url', default='')
 @click.option('--days', default=1)
 def populate(url, days):
+    if url == '':
+        raise ValueError('Url must be present')
     Populate.run(url, days)
