@@ -43,4 +43,7 @@ class TagExtractor(object):
 
     def __website(self):
         parsed_uri = urllib.parse.urlparse(self.data['data']['url'])
-        return '{uri.scheme}://{uri.netloc}'.format(uri=parsed_uri).lower()
+        if parsed_uri.scheme != '':
+            return '{uri.scheme}://{uri.netloc}'.format(uri=parsed_uri).lower()
+        else:
+            return self.data['data']['url'].rstrip('/').lower()
