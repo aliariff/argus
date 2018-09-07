@@ -10,9 +10,9 @@ coloredlogs.install()
 
 
 def run(url, days):
-    logger.info('Fetching tests of {} for the last {} days'.format(url, days))
+    logger.info("Fetching tests of {} for the last {} days".format(url, days))
     ids = webpagetest.get_test_ids(url, days)
-    logger.info('Test ids found {}'.format(len(ids)))
+    logger.info("Test ids found {}".format(len(ids)))
 
     futures = []
     for id_ in ids:
@@ -24,17 +24,16 @@ def run(url, days):
 
 
 async def __process(test_id):
-    logger.info('Get data from test {}'.format(test_id))
+    logger.info("Get data from test {}".format(test_id))
     data = await webpagetest.get_result(test_id)
-    if data.get('statusCode') != 200:
-        logger.error('Get data failed {}'.format(test_id))
+    if data.get("statusCode") != 200:
+        logger.error("Get data failed {}".format(test_id))
         return
 
-    logger.info('Building metric for test {}'.format(test_id))
+    logger.info("Building metric for test {}".format(test_id))
     metrics = Builder(data).run()
 
-    logger.info('Saving metric for test {}, size: {}'.format(
-        test_id, len(metrics)))
+    logger.info("Saving metric for test {}, size: {}".format(test_id, len(metrics)))
     InfluxDB().save(metrics)
 
     return

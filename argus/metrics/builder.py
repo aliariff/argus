@@ -8,7 +8,7 @@ from .render_start import RenderStart
 from .speed_index import SpeedIndex
 
 
-''' We should think about metrics with multiple values like TTFB(mean,media) !still not supported'''
+""" We should think about metrics with multiple values like TTFB(mean,media) !still not supported"""
 
 
 class Builder(object):
@@ -19,9 +19,19 @@ class Builder(object):
 
     def run(self):
         results = []
-        metrics = [cls(self.data).run()
-                   for cls in [Ttfb, RequestPerType, DomElements, FullyLoaded,
-                               Latency, LoadTime, RenderStart, SpeedIndex]]
+        metrics = [
+            cls(self.data).run()
+            for cls in [
+                Ttfb,
+                RequestPerType,
+                DomElements,
+                FullyLoaded,
+                Latency,
+                LoadTime,
+                RenderStart,
+                SpeedIndex,
+            ]
+        ]
         for metric in metrics:
             if metric is None:
                 continue

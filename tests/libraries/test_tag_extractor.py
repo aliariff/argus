@@ -10,19 +10,19 @@ class TestTagExtractor(object):
         return obj
 
     def test_browser(self, obj):
-        assert obj.browser() == 'Chrome'
+        assert obj.browser() == "Chrome"
 
     def test_city(self, obj):
-        assert obj.city() == 'Dulles'
+        assert obj.city() == "Dulles"
 
     def test_connection(self, obj):
-        assert obj.connection() == 'Cable'
+        assert obj.connection() == "Cable"
 
     def test_country(self, obj):
-        assert obj.country() == 'VA'
+        assert obj.country() == "VA"
 
     def test_device(self, obj):
         pass
 
     def test_website(self, obj):
-        assert obj.website() == 'http://www.barenecessities.com'
+        assert obj.website() == "http://www.barenecessities.com"

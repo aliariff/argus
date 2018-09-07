@@ -19,11 +19,11 @@ class Base(object):
             "measurement": self.measurement(),
             "tags": self.tags(),
             "time": self.time(),
-            "fields": self.fields()
+            "fields": self.fields(),
         }
 
     def get_value_from_column(self, key):
-        data = self.data['data']['average']['firstView']
+        data = self.data["data"]["average"]["firstView"]
         if isinstance(data, dict):
             return data.get(key)
         return None
@@ -44,6 +44,5 @@ class Base(object):
         return TagExtractor(self.data).extract()
 
     def time(self):
-        timestamp = datetime.datetime.fromtimestamp(
-            self.data['data']['completed'])
-        return timestamp.strftime('%Y-%m-%dT%H:%M:%SZ')
+        timestamp = datetime.datetime.fromtimestamp(self.data["data"]["completed"])
+        return timestamp.strftime("%Y-%m-%dT%H:%M:%SZ")
