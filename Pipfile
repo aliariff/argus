@@ -11,6 +11,7 @@ influxdb = "*"
 aiohttp = "*"
 coloredlogs = "*"
 idna-ssl = "*"
+geotext = "*"
 
 [dev-packages]
 argus = {editable = true, path = "."}
