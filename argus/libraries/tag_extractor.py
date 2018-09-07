@@ -26,19 +26,27 @@ class TagExtractor(object):
         return self.data["data"]["location"].split(":")[1]
 
     def city(self):
-        return LocationDetails(self.locations, self.data["data"]["location"].split(":")[0]).city()
+        return LocationDetails(
+            self.locations, self.data["data"]["location"].split(":")[0]
+        ).city()
 
     def connection(self):
         return self.data["data"]["connectivity"]
 
     def country(self):
-        return LocationDetails(self.locations,self.data["data"]["location"].split(":")[0]).country()
+        return LocationDetails(
+            self.locations, self.data["data"]["location"].split(":")[0]
+        ).country()
 
     def device(self):
-        return LocationDetails(self.locations, self.data["data"]["location"].split(":")[0]).device()
+        return LocationDetails(
+            self.locations, self.data["data"]["location"].split(":")[0]
+        ).device()
 
     def region(self):
-        return LocationDetails(self.locations,self.data["data"]["location"].split(":")[0]).region()
+        return LocationDetails(
+            self.locations, self.data["data"]["location"].split(":")[0]
+        ).region()
 
     def website(self):
         parsed_uri = urllib.parse.urlparse(self.data["data"]["url"])
