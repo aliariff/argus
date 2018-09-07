@@ -16,6 +16,7 @@ idna-ssl = "*"
 argus = {editable = true, path = "."}
 pylint = "*"
 "autopep8" = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"
