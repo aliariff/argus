@@ -48,14 +48,23 @@ Options:
   --help          Show this message and exit.
 ```
 
-Via Docker
+With Docker
+-----------
 
+Build image:
 ```
 docker build . -t argus
+```
 
+Example: ***InfluxDB*** listening at host machine `localhost:8086`
+```
 docker run -it argus:latest --host=host.docker.internal populate --url=abc.com --days=30
 ```
 
+Example: Custom host and port
+```
+docker run -it argus:latest --host=some_ip:7777 populate --url=abc.com --days=30
+```
 
 Features
 --------
