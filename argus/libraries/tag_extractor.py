@@ -53,4 +53,4 @@ class TagExtractor(object):
         if parsed_uri.scheme != "":
             return "{uri.scheme}://{uri.netloc}".format(uri=parsed_uri).lower()
         else:
-            return self.data["data"]["url"].rstrip("/").lower()
+            return "http://" + self.data["data"]["url"].rstrip("/").lower()
