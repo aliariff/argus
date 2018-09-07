@@ -1,31 +1,28 @@
-import json
-import os
 from argus.libraries.tag_extractor import TagExtractor
+import pytest
+import tests.samples.loader as loader
 
 
 class TestTagExtractor(object):
-    def load_data(self):
-        script_dir = os.path.dirname(__file__)
-        rel_path = "../samples/test_result.json"
-        abs_file_path = os.path.join(script_dir, rel_path)
-        with open(abs_file_path) as f:
-            return json.load(f)
+    @pytest.fixture
+    def obj(self):
+        obj = TagExtractor(loader.load_sample())
+        return obj
 
-    def test_browser(self):
-        assert TagExtractor(self.load_data()).browser() == 'Chrome'
+    def test_browser(self, obj):
+        assert obj.browser() == 'Chrome'
 
-    def test_city(self):
-        assert TagExtractor(self.load_data()).city() == 'Dulles'
+    def test_city(self, obj):
+        assert obj.city() == 'Dulles'
 
-    def test_connection(self):
-        assert TagExtractor(self.load_data()).connection() == 'Cable'
+    def test_connection(self, obj):
+        assert obj.connection() == 'Cable'
 
-    def test_country(self):
-        assert TagExtractor(self.load_data()).country() == 'VA'
+    def test_country(self, obj):
+        assert obj.country() == 'VA'
 
-    def test_device(self):
+    def test_device(self, obj):
         pass
 
-    def test_website(self):
-        assert TagExtractor(self.load_data()).website(
-        ) == 'http://www.barenecessities.com'
+    def test_website(self, obj):
+        assert obj.website() == 'http://www.barenecessities.com'
