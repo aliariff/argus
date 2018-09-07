@@ -17,6 +17,7 @@ argus = {editable = true, path = "."}
 pylint = "*"
 "autopep8" = "*"
 pytest = "*"
+httpretty = "*"
 
 [requires]
 python_version = "3.7"
