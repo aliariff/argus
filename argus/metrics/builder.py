@@ -1,6 +1,12 @@
 from .ttfb import Ttfb
 from .request_per_type import RequestPerType
-from .response_time import ResponseTime
+from .dom_elements import DomElements
+from .fully_loaded import FullyLoaded
+from .latency import Latency
+from .load_time import LoadTime
+from .render_start import RenderStart
+from .speed_index import SpeedIndex
+
 
 ''' We should think about metrics with multiple values like TTFB(mean,media) !still not supported'''
 
@@ -14,8 +20,8 @@ class Builder(object):
     def run(self):
         results = []
         metrics = [cls(self.data).run()
-                   for cls in [Ttfb, RequestPerType, ResponseTime, DomElements, FullyLoaded, \
-                   Latency, LoadTime, RenderStart, SpeedIndex]]
+                   for cls in [Ttfb, RequestPerType, DomElements, FullyLoaded,
+                               Latency, LoadTime, RenderStart, SpeedIndex]]
         for metric in metrics:
             if metric is None:
                 continue

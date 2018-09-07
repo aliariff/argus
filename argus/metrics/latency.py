@@ -3,21 +3,16 @@ from .base import Base
 
 class Latency(Base):
     def fill(self):
-        return {
-            "measurement": self.measurement(),
-            "tags": self.tags(),
-            "time": self.time(),
-            "fields": {
-                "value": float(self.value)
-            }
-        }
+        return self.default_fill()
 
     def is_valid(self):
-        self.value = None
-        data = self.data['data']
-        if isinstance(data, dict):
-            self.value = data.get('latency')
+        self.value = self.get_value_from_column('latency')
         return self.value != None
 
     def measurement(self):
         return 'latency'
+
+    def fields(self):
+        return {
+            "value": float(self.value)
+        }

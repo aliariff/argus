@@ -1,22 +1,18 @@
 from .base import Base
 
+
 class RenderStart(Base):
     def fill(self):
-        return {
-            "measurement": self.measurement(),
-            "tags": self.tags(),
-            "time": self.time(),
-            "fields": {
-                "value": float(self.value)
-            }
-        }
+        return self.default_fill()
 
     def is_valid(self):
-        self.value = None
-        data = self.data['data']['average']['firstView']
-        if isinstance(data, dict):
-            self.value = data.get('render')
+        self.value = self.get_value_from_column('render')
         return self.value != None
 
     def measurement(self):
         return 'render_start'
+
+    def fields(self):
+        return {
+            "value": float(self.value)
+        }

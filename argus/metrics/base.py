@@ -14,7 +14,24 @@ class Base(object):
         else:
             return None
 
+    def default_fill(self):
+        return {
+            "measurement": self.measurement(),
+            "tags": self.tags(),
+            "time": self.time(),
+            "fields": self.fields()
+        }
+
+    def get_value_from_column(self, key):
+        data = self.data['data']['average']['firstView']
+        if isinstance(data, dict):
+            return data.get(key)
+        return None
+
     def fill(self):
+        raise NotImplementedError()
+
+    def fields(self):
         raise NotImplementedError()
 
     def is_valid(self):
