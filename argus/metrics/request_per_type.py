@@ -39,9 +39,12 @@ class RequestPerType(Base):
         return dict(results)
 
     def _local_tags(self, key):
-        media_type, extension = key.split('/')
-        extension = extension.split(';', 1)[0]
-        return {
-            "media_type": media_type,
-            "extension": extension
-        }
+        try:
+            media_type, extension = key.split('/')
+            extension = extension.split(';', 1)[0]
+            return {
+                "media_type": media_type,
+                "extension": extension
+            }
+        except:
+            return {}
