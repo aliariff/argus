@@ -1,3 +1,5 @@
+from argus.libraries.fix_locations import FixLocations
+from argus.libraries.locations_details import LocationDetails
 import re
 import urllib
 
@@ -5,6 +7,7 @@ import urllib
 class TagExtractor(object):
     def __init__(self, data, *args, **kwargs):
         self.data = data
+        self.locations = FixLocations()
         self.args = args
         self.kwargs = kwargs
 
@@ -15,6 +18,7 @@ class TagExtractor(object):
             "connection": self.connection(),
             "country": self.country(),
             "device": self.device(),
+            "region": self.region(),
             "website": self.website(),
         }
 
@@ -22,24 +26,19 @@ class TagExtractor(object):
         return self.data["data"]["location"].split(":")[1]
 
     def city(self):
-        temp = self.data["data"]["from"].split()
-        if temp[1] == "-":
-            return None
-        else:
-            return re.sub("[^a-zA-Z]+", "", temp[0])
+        return LocationDetails(self.data['data']['location'].split(':')[0]).city()
 
     def connection(self):
         return self.data["data"]["connectivity"]
 
     def country(self):
-        temp = self.data["data"]["from"].split()
-        if temp[1] == "-":
-            return temp[0]
-        else:
-            return temp[1]
+        return LocationDetails(self.data['data']['location'].split(':')[0]).country()
 
     def device(self):
-        pass
+        return LocationDetails(self.data['data']['location'].split(':')[0]).device()
+
+    def region(self):
+        return LocationDetails(self.data['data']['location'].split(':')[0]).region()
 
     def website(self):
         parsed_uri = urllib.parse.urlparse(self.data["data"]["url"])
