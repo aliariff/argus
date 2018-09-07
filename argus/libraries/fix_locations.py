@@ -5,11 +5,13 @@ from geotext import GeoText
 
 
 class FixLocations:
+
     def __init__(self):
         p = Path(__file__).parents[1]
         location_file = os.path.join(p, "resources", "get_locations.json")
         with open(location_file) as f:
-            self.original = json.load(f)
+            locations = json.load(f)['data']
+        self.original = locations
         self.fixed = self.get_fixed_locations()
 
     def get_fixed_locations(self):
