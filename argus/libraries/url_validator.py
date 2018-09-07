@@ -17,6 +17,7 @@ class UrlValidator(object):
 
         for td in tds:
             title = td.find('a')['title']
+            print(title)
             if self.normalize_url(title) in allowed_urls:
                 test_id = td.find('a')['href'][8:-1]
                 test_ids.append(test_id)
@@ -24,14 +25,15 @@ class UrlValidator(object):
 
     def get_allowed_urls(self):
         allowed_urls = []
+        allowed_urls.append(self.normalize_url(self.url))
+
         parsed_uri = urllib.parse.urlparse(self.url)
         if parsed_uri.scheme == '':
             allowed_urls.append(self.normalize_url(
                 'https://{}'.format(self.url)))
             allowed_urls.append(self.normalize_url(
                 'http://{}'.format(self.url)))
-        else:
-            allowed_urls.append(self.normalize_url(self.url))
+
         return allowed_urls
 
     def normalize_url(self, url):
