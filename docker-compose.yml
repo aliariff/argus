@@ -1,6 +1,11 @@
 version: '3'
 
 services:
+  argus:
+    build: .
+    command: --host=influxdb populate --url ${URL} --days ${DAYS}
+    depends_on:
+      - influxdb
   influxdb:
     image: influxdb:1.6
     ports:
