@@ -6,7 +6,7 @@ class ResponseCode(Base):
     def fill(self):
         return {
             "measurement": self.measurement(),
-            "tags": self.tags(),
+            "tags": self.default_tags(),
             "time": self.time(),
             "fields": self.__count_response_code(),
         }
