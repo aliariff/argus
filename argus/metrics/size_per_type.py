@@ -33,7 +33,8 @@ class SizePerType(Base):
         for req in self.requests:
             content_type = req.get("contentType")
             if content_type in sum_size:
-                sum_size[content_type] += req.get("objectSize")
+                if req.get("objectSize") != "":
+                    sum_size[content_type] += int(req.get("objectSize"))
             else:
                 sum_size[content_type] = 0
         return sum_size

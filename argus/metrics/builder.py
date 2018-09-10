@@ -7,6 +7,7 @@ from .load_time import LoadTime
 from .render_start import RenderStart
 from .speed_index import SpeedIndex
 from .size_per_type import SizePerType
+from .response_code import ResponseCode
 
 
 """ We should think about metrics with multiple values like TTFB(mean,media) !still not supported"""
@@ -32,6 +33,7 @@ class Builder(object):
                 RenderStart,
                 SpeedIndex,
                 SizePerType,
+                ResponseCode,
             ]
         ]
         for metric in metrics:

@@ -13,6 +13,7 @@ class TagExtractor(object):
 
     def extract(self):
         return {
+            "id": self.data["data"]["id"],
             "browser": self.browser(),
             "city": self.city(),
             "connection": self.connection(),
