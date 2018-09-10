@@ -10,9 +10,6 @@ from .size_per_type import SizePerType
 from .response_code import ResponseCode
 
 
-""" We should think about metrics with multiple values like TTFB(mean,media) !still not supported"""
-
-
 class Builder(object):
     def __init__(self, data, *args, **kwargs):
         self.data = data
