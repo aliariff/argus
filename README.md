@@ -48,8 +48,8 @@ Options:
   --help          Show this message and exit.
 ```
 
-With Docker
------------
+With Docker Run
+---------------
 
 Build image:
 ```
@@ -66,5 +66,17 @@ Example: Custom host and port
 docker run -it argus:latest --host=some_ip:7777 populate --url=abc.com --days=30
 ```
 
+With Docker Compose (InfluxDB + Grafana)
+----------------------------------------
+
+Run:
+```
+URL=abc.com DAYS=30 docker-compose up --build
+```
+
 Features
 --------
+
+- ...
+- ...
+- ...
