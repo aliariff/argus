@@ -13,11 +13,10 @@ class DomElements(Base):
         return self.default_fill()
 
     def is_valid(self):
-        self.value = self.get_value_from_column("domElements")
-        return self.value != None
+        return self.get_value_from_column("domElements") != None
 
     def measurement(self):
         return "DOM_elements"
 
     def fields(self):
-        return {"value": float(self.value)}
+        return {"value": float(self.get_value_from_column("domElements"))}

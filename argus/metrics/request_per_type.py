@@ -4,7 +4,6 @@ from collections import Counter
 
 class RequestPerType(Base):
     def fill(self):
-        self.requests = self.data["data"]["runs"]["1"]["firstView"]["requests"]
         request_counts = self.__count_request_per_type()
 
         metrics = []
@@ -14,7 +13,7 @@ class RequestPerType(Base):
 
             metric = {
                 "measurement": self.measurement(),
-                "tags": {**self.tags(), **self._local_tags(key)},
+                "tags": {**self.default_tags(), **self.media_type_tags(key)},
                 "time": self.time(),
                 "fields": {"value": value},
             }
@@ -31,11 +30,3 @@ class RequestPerType(Base):
     def __count_request_per_type(self):
         results = Counter([request.get("contentType") for request in self.requests])
         return dict(results)
-
-    def _local_tags(self, key):
-        try:
-            media_type, extension = key.split("/")
-            extension = extension.split(";", 1)[0]
-            return {"media_type": media_type, "extension": extension}
-        except:
-            return {}

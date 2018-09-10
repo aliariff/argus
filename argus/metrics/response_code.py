@@ -18,6 +18,5 @@ class ResponseCode(Base):
         return "response_code"
 
     def __count_response_code(self):
-        self.requests = self.data["data"]["runs"]["1"]["firstView"]["requests"]
         results = Counter([request.get("responseCode") for request in self.requests])
         return dict(results)
