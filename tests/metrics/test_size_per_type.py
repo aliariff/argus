@@ -33,7 +33,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 35624},
@@ -50,7 +50,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 202015},
@@ -67,7 +67,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 92164},
@@ -84,7 +84,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 340492},
@@ -101,7 +101,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 290050},
@@ -118,7 +118,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 6907},
@@ -135,7 +135,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 37949},
@@ -152,7 +152,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 813},
@@ -169,7 +169,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 130550},
@@ -186,7 +186,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 19161},
@@ -203,7 +203,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 0},
@@ -220,7 +220,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 131},
@@ -237,7 +237,7 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
             {
                 "fields": {"value": 0},
@@ -254,6 +254,6 @@ class TestSizePerType(object):
                     "region": "Dulles",
                     "website": "http://www.barenecessities.com",
                 },
-                "time": "2018-09-04T09:36:27Z",
+                "time": "2018-09-04T07:36:27Z",
             },
         ]

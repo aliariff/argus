@@ -53,5 +53,5 @@ class Base(object):
             return {}
 
     def time(self):
-        timestamp = datetime.datetime.fromtimestamp(self.data["data"]["completed"])
+        timestamp = datetime.datetime.utcfromtimestamp(self.data["data"]["completed"])
         return timestamp.strftime("%Y-%m-%dT%H:%M:%SZ")
