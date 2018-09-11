@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="Argus Logo" src="https://drive.google.com/uc?export=view&id=1Jn7ceHJBfSzZct0c7s6NarySQVffswWs" height="250">
+<img alt="Argus Logo" src="https://drive.google.com/uc?export=view&id=1Jn7ceHJBfSzZct0c7s6NarySQVffswWs" height="150">
 </p>
 
 <h2 align="center">Argus</h2>
