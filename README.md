@@ -1,3 +1,7 @@
+<center>
+<img alt="Argus Logo" src="https://drive.google.com/uc?export=view&id=1Jn7ceHJBfSzZct0c7s6NarySQVffswWs" height="250">
+</center>
+
 <h2 align="center">Argus</h2>
 
 <p align="center">
