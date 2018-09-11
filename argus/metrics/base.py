@@ -5,7 +5,7 @@ from argus.libraries.tag_extractor import TagExtractor
 class Base(object):
     def __init__(self, data, *args, **kwargs):
         self.data = data
-        self.requests = self.data["data"]["runs"]["1"]["firstView"]["requests"]
+        self.requests = self.data["data"]["runs"]["1"]["firstView"].get("requests", [])
         self.args = args
         self.kwargs = kwargs
 
