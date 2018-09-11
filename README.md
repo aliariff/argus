@@ -1,6 +1,6 @@
-<center>
+<p align="center">
 <img alt="Argus Logo" src="https://drive.google.com/uc?export=view&id=1Jn7ceHJBfSzZct0c7s6NarySQVffswWs" height="250">
-</center>
+</p>
 
 <h2 align="center">Argus</h2>
 
@@ -84,3 +84,8 @@ Features
 - ...
 - ...
 - ...
+
+Logo
+----
+
+Created my free logo at [LogoMakr.com](https://logomakr.com)
