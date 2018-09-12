@@ -21,7 +21,7 @@
 
 <hr>
 
-**Argus** is a an open-source CLI app for webpagetest.org
+**Argus** is a an open-source CLI fetcher for webpagetest.org
 
 ![App Screenshot](https://drive.google.com/uc?export=view&id=1XT4W0HS65Af-sMZHAAvxGTI59TXoY81T)
 
@@ -81,9 +81,9 @@ URL=abc.com DAYS=30 docker-compose up --build
 Features
 --------
 
-- ...
-- ...
-- ...
+- Call the test history of a certain website for a specific period of time.
+- Populate the data in influxDB to build interactive dashboards that visualize the test metrics.
+- Argus can be easily extended with more metrics and adjusted to your needs thanks to its flexible code structure. 
 
 Logo
 ----
